@@ -34,141 +34,139 @@ For an easier way to manage and execute your tests check out Red Gate SQL Test.
 Below is a test case template that also explains the three parts that every 
 test should contain.
 */
-go
+GO
 --  Comments here are associated with the test.
 --  For test case examples, see: http://tsqlt.org/user-guide/tsqlt-tutorial/
-create procedure [<Test_Class,sysname,>].[<Test_Name,sysname,test >]
-as
-begin
+CREATE PROCEDURE [<Test_Class,sysname,>].[<Test_Name,sysname,test >]
+AS
+BEGIN
   --Assemble
   --  This section is for code that sets up the environment. It often
   --  contains calls to methods such as tSQLt.FakeTable and tSQLt.SpyProcedure
   --  along with INSERTs of relevant data.
   --  For more information, see http://tsqlt.org/user-guide/isolating-dependencies/
-
+  
   --Act
   --  Execute the code under test like a stored procedure, function or view
   --  and capture the results in variables or tables.
-
+  
   --Assert
   --  Compare the expected and actual values, or call tSQLt.Fail in an IF statement.  
   --  Typical Asserts: tSQLt.AssertEquals, tSQLt.AssertEqualsString, tSQLt.AssertEqualsTable
   --  For a complete list, see: http://tsqlt.org/user-guide/assertions/
-  exec tSQLt.Fail 'TODO:Implement this test.'
-
-end;
-go
+  EXEC tSQLt.Fail 'TODO:Implement this test.'
+  
+END;
+GO
 
 ---------------------------------------------------------------------------------------------------------
 --tac
 --tSQLt.ApplyConstraint [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.ApplyConstraint @TableName = '$CURSOR$', @ConstraintName = '';
+EXEC tSQLt.ApplyConstraint @TableName = '$CURSOR$', @ConstraintName = '';
 ---------------------------------------------------------------------------------------------------------
 --tmt
 --tSQLt.AssertEmptyTable [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.AssertEmptyTable @TableName = '$CURSOR$';
+EXEC tSQLt.AssertEmptyTable @TableName = '$CURSOR$';
 ---------------------------------------------------------------------------------------------------------
 --te
 --tSQLt.AssertEquals [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.AssertEquals @Expected = '$CURSOR$', @Actual;
+EXEC tSQLt.AssertEquals @Expected = '$CURSOR$', @Actual;
 ---------------------------------------------------------------------------------------------------------
 --tes
 --tSQLt.AssertEqualsString [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.AssertEqualsString @Expected = '$CURSOR$', @Actual;
+EXEC tSQLt.AssertEqualsString @Expected = '$CURSOR$', @Actual;
 ---------------------------------------------------------------------------------------------------------
 --tet
 --tSQLt.AssertEqualsTable [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.AssertEqualsTable '#Expected','#Actual';
+EXEC tSQLt.AssertEqualsTable '#Expected','#Actual';
 ---------------------------------------------------------------------------------------------------------
 --tal
 --tSQLt.AssertLike [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.AssertLike @ExpectedPattern = '$CURSOR$', @Actual;
+EXEC tSQLt.AssertLike @ExpectedPattern = '$CURSOR$', @Actual;
 ---------------------------------------------------------------------------------------------------------
 --tne
 --tSQLt.AssertNotEquals [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.AssertNotEquals @Expected = '$CURSOR$', @Actual;
+EXEC tSQLt.AssertNotEquals @Expected = '$CURSOR$', @Actual;
 ---------------------------------------------------------------------------------------------------------
 --toe
 --tSQLt.AssertObjectExists [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.AssertObjectExists @ObjectName = '$CURSOR$';
+EXEC tSQLt.AssertObjectExists @ObjectName = '$CURSOR$';
 ---------------------------------------------------------------------------------------------------------
 --tco
 --tSQLt.CaptureOutput [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.CaptureOutput '$CURSOR$';
+EXEC tSQLt.CaptureOutput '$CURSOR$';
 
-select
-  *
-into #Actual
-from
-  tSQLt.CaptureOutputLog;
+SELECT * 
+  INTO #Actual
+  FROM tSQLt.CaptureOutputLog;
 
 ---------------------------------------------------------------------------------------------------------
 --txe  
 --tSQLt.ExpectException [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.ExpectException @ExpectedMessage = '$CURSOR$', @ExpectedSeverity = null, @ExpectedState = null;
+EXEC tSQLt.ExpectException @ExpectedMessage = '$CURSOR$', @ExpectedSeverity = NULL, @ExpectedState = NULL;
 ---------------------------------------------------------------------------------------------------------
 --txp  
 --tSQLt.ExpectException:Pattern [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.ExpectException @ExpectedMessagePattern = '$CURSOR$', @ExpectedSeverity = null, @ExpectedState = null;
+EXEC tSQLt.ExpectException @ExpectedMessagePattern = '$CURSOR$', @ExpectedSeverity = NULL, @ExpectedState = NULL;
 ---------------------------------------------------------------------------------------------------------
 --tf
 --tSQLt.Fail [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.Fail '$CURSOR$';
+EXEC tSQLt.Fail '$CURSOR$';
 ---------------------------------------------------------------------------------------------------------
 --tft
 --tSQLt.FakeTable [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.FakeTable @TableName = '$CURSOR$', @Identity = 0, @ComputedColumns = 0, @Defaults = 0;
+EXEC tSQLt.FakeTable @TableName = '$CURSOR$', @Identity = 0, @ComputedColumns = 0, @Defaults = 0;
 ---------------------------------------------------------------------------------------------------------
 --tnc
 --tSQLt.NewConnection [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.NewConnection @command='$CURSOR$';
+EXEC tSQLt.NewConnection @command='$CURSOR$';
 ---------------------------------------------------------------------------------------------------------
 --tnt
 --tSQLt.NewTestClass [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.NewTestClass '$CURSOR$';
-go
-create procedure .[test ]
-as
-begin
+EXEC tSQLt.NewTestClass '$CURSOR$';
+GO
+CREATE PROCEDURE .[test ]
+AS
+BEGIN
 
-  end;
-go
+END;
+GO
 
 ---------------------------------------------------------------------------------------------------------
 --tro
 --tSQLt.RemoveObject [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.RemoveObject @ObjectName = '$CURSOR$';
+EXEC tSQLt.RemoveObject @ObjectName = '$CURSOR$';
 ---------------------------------------------------------------------------------------------------------
 --trf
 --tSQLt.ResultSetFilter [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.ResultSetFilter @ResultsetNo = 1, @Command = '$CURSOR$';
+EXEC tSQLt.ResultSetFilter @ResultsetNo = 1, @Command = '$CURSOR$';
 ---------------------------------------------------------------------------------------------------------
 --tsp
 --tSQLt.SpyProcedure [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.SpyProcedure @ProcedureName = '$CURSOR$', @CommandToExecute = null;
+EXEC tSQLt.SpyProcedure @ProcedureName = '$CURSOR$', @CommandToExecute = NULL;
 ---------------------------------------------------------------------------------------------------------
 --tso
 --tSQLt.SuppressOutput [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-exec tSQLt.SuppressOutput @command = '$CURSOR$';
+EXEC tSQLt.SuppressOutput @command = '$CURSOR$';
 ---------------------------------------------------------------------------------------------------------
 --tea
 --tSQLt: create #Expected from #Actual [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-select top (0)
-       *
-  into #Expected
-  from #Actual;
+SELECT TOP(0) *
+INTO #Expected
+FROM #Actual;
 ---------------------------------------------------------------------------------------------------------
 --tie
 --tSQLt: INSERT INTO #Expected [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-insert into #Expected
-values($CURSOR$);
+INSERT INTO #Expected
+VALUES($CURSOR$);
 ---------------------------------------------------------------------------------------------------------
 --tca
 --tSQLt: SELECT INTO #Actual; [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-select
-  *
-into #Actual
-from
-  $CURSOR$;
+SELECT *
+INTO #Actual
+FROM $CURSOR$;
 
 ---------------------------------------------------------------------------------------------------------
+
+
+  
