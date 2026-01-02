@@ -153,12 +153,10 @@ exec tSQLt.SuppressOutput @command = '$CURSOR$';
 ---------------------------------------------------------------------------------------------------------
 --tea
 --tSQLt: create #Expected from #Actual [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
-select
-  top(0)
-  *
-into #Expected
-from
-  #Actual;
+select top (0)
+       *
+  into #Expected
+  from #Actual;
 ---------------------------------------------------------------------------------------------------------
 --tie
 --tSQLt: INSERT INTO #Expected [tSQLt - Database Unit Testing for SQL Server. Get it at http://tsqlt.org]
@@ -174,6 +172,3 @@ from
   $CURSOR$;
 
 ---------------------------------------------------------------------------------------------------------
-
-
-  
